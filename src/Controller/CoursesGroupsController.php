@@ -34,9 +34,7 @@ class CoursesGroupsController extends AppController
      */
     public function view($id = null)
     {
-        $coursesGroup = $this->CoursesGroups->get($id, [
-            'contain' => []
-        ]);
+        $coursesGroup = $this->CoursesGroups->get($id, [       'contain' => []        ]);
 
         $this->set('coursesGroup', $coursesGroup);
     }

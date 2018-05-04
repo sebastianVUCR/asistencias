@@ -32,7 +32,8 @@ class CoursesGroupsTable extends Table
 
         $this->setTable('courses_groups');
         $this->setDisplayField('id_courses_groups');
-        $this->setPrimaryKey(['id_courses_groups', 'period', 'year']);
+        //$this->setPrimaryKey(['id_courses_groups', 'period', 'year']);
+        $this->setPrimaryKey(['id_courses_groups']);
     }
 
     /**
@@ -46,7 +47,8 @@ class CoursesGroupsTable extends Table
         $validator
             ->scalar('id_courses_groups')
             ->maxLength('id_courses_groups', 10)
-            ->allowEmpty('id_courses_groups', 'create');
+            ->requirePresence('id_courses_groups', 'create')
+            ->notEmpty('id_courses_groups', 'create');
 
         $validator
             ->scalar('professor')
@@ -62,11 +64,13 @@ class CoursesGroupsTable extends Table
 
         $validator
             ->integer('period')
-            ->allowEmpty('period', 'create');
+            ->requirePresence('period', 'create')
+            ->notEmpty('period', 'create');
 
         $validator
             ->integer('year')
-            ->allowEmpty('year', 'create');
+            ->requirePresence('year', 'create')
+            ->notEmpty('year', 'create');
 
         $validator
             ->boolean('active')
